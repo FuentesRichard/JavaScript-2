@@ -43,6 +43,13 @@ section{
 	overflow: hidden;
 }
 
+#mensagens-erro li{
+	font-size: 10px;
+	margin: 2px 0;
+	font-style: italic;
+	color: red;
+}
+
 section h2{
 	font-size: 3em;
 	display: block;

@@ -1,5 +1,5 @@
 var botaoAdicionar = document.querySelector("#adicionar-paciente");
-botaoAdicionar.addEventListener("click", function(event) {
+botaoAdicionar.addEventListener("click", function (event) {
     event.preventDefault();
     // Mexendo no form
     //pegando minha form
@@ -7,17 +7,39 @@ botaoAdicionar.addEventListener("click", function(event) {
     //obtendo paciente do form
     var paciente = obtemPacienteDoFormulario(form);
     //cria a tr e a td
-    var pacienteTr =montaTr (paciente);
-  
+    var pacienteTr = montaTr(paciente);
+
+    var erros = validaPaciente(paciente);
+
+    if (erros.length > 0) {
+        exibeMensagensDeErro(erros);
+
+        return;
+    }
+
     var tabela = document.querySelector("#tabela-pacientes");
 
     tabela.appendChild(pacienteTr);
 
     form.reset();
+    var mensagensErro = document.querySelector("#mensagens-erro");
+    mensagensErro.innerHTML = "";
     console.log(pacienteTr);
 });
 
-function obtemPacienteDoFormulario (form){
+function exibeMensagensDeErro(erros) {
+    var ul = document.querySelector("#mensagens-erro")
+    ul.innerHTML = "";
+
+    erros.forEach(function (erro) {
+        var li = document.createElement("li");
+        li.textContent = erro;
+        ul.appendChild(li);
+    });
+
+}
+
+function obtemPacienteDoFormulario(form) {
 
     var paciente = {
         nome: form.nome.value,
@@ -45,12 +67,32 @@ function montaTr(paciente) {
 }
 // criando td
 function montaTd(dado, classe) {
- 
+
     var td = document.createElement("td");
     td.textContent = dado;
     td.classList.add(classe)
-    
+
     return td;
+}
+
+function validaPaciente(paciente) {
+
+    var erros = [];
+
+    if (paciente.nome.length == 0) {
+        erros.push("Nome não pode sem em branco");
+    }
+    if (!validaPeso(paciente.peso)) {
+        erros.push("Peso é Inválido");
+    }
+    if (!validaAltura(paciente.altura)) {
+        erros.push("Altura é inválida");
+    }
+    if (paciente.gordura <= 0 || paciente.gordura >= 100) {
+        erros.push("Porcentagem de gordura Inválida")
+    }
+
+    return erros;
 }
 
 
