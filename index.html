@@ -19,6 +19,8 @@
 	<main>
 		<section class="container">
 			<h2>Meus pacientes</h2>
+			<label for="filtrar-tabela">Filtre:</label>
+			<input type="text" name="filtro" id="filtrar-tabela" placeholder="Digite o nome do paciente">
 			<table>
 				<thead>
 					<tr>
@@ -71,36 +73,46 @@
 				</tbody>
 			</table>
 
+			<button id="buscar-pacientes" class="bto-principal">Buscar Paciente</button>
+
 		</section>
-		<section class="container">
-			<h2 id="titulo-form">Adicionar novo paciente</h2>
-			<ul id="mensagens-erro"></ul>
-			<form id="form-adiciona">
-				<div class="grupo">
+	</main>
+
+
+	<section class="container">
+		<h2 id="titulo-form">Adicionar novo paciente</h2>
+		<ul id="mensagens-erro"></ul>
+		<form id="form-adiciona">
+			<div class="grupo">
 				<label for "nome">Nome</label>
 				<input id="nome" name="nome" type="text" placeholder="Digite o nome do seu paciente" class="campo">
-				</div>
-				<div class="grupo">
-					<label for "peso">Peso</label>
-					<input id="peso" name="peso" type="texto" placeholder="Digite o peso do seu paciente" class="campo">
-				</div>
-				<div class="grupo">
-					<label for "altura">Altura</label>
-					<input id="altura" name="altura" type="texto" placeholder="Digite a altura do seu paciente" class="campo">
-				</div>
-				<div class="grupo">
-					<label for="gordura">% de Gordura</label>
-					<input id="gordura" name="gordura" type="text" placeholder="Digite a porcentagem de gordura" class="campo">
-				</div>
-				<div class="grupo">
-					<button id="adicionar-paciente">Adicionar</button>
-				</div>
-			</form>
-		</section>
+			</div>
+			<div class="grupo">
+				<label for "peso">Peso</label>
+				<input id="peso" name="peso" type="texto" placeholder="Digite o peso do seu paciente" class="campo">
+			</div>
+			<div class="grupo">
+				<label for "altura">Altura</label>
+				<input id="altura" name="altura" type="texto" placeholder="Digite a altura do seu paciente"
+					class="campo">
+			</div>
+			<div class="grupo">
+				<label for="gordura">% de Gordura</label>
+				<input id="gordura" name="gordura" type="text" placeholder="Digite a porcentagem de gordura"
+					class="campo">
+			</div>
+			<div class="grupo">
+				<button id="adicionar-paciente" class="bto-principal">Adicionar</button>
+			</div>
+		</form>
+	</section>
 
-	</main>
+
 	<script src="js/calcula-imc.js"></script>
 	<script src="js/form.js"></script>
+	<script src="js/remover-pacientes.js"></script>
+	<script src="js/filtra.js"></script>
+	<script src="js/buscar-pacientes.js"></script>
 </body>
 
 </html>

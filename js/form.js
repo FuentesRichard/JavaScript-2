@@ -6,8 +6,8 @@ botaoAdicionar.addEventListener("click", function (event) {
     var form = document.querySelector("#form-adiciona");
     //obtendo paciente do form
     var paciente = obtemPacienteDoFormulario(form);
-    //cria a tr e a td
-    var pacienteTr = montaTr(paciente);
+
+    adicionaPacienteNaTabela(paciente);
 
     var erros = validaPaciente(paciente);
 
@@ -17,15 +17,17 @@ botaoAdicionar.addEventListener("click", function (event) {
         return;
     }
 
-    var tabela = document.querySelector("#tabela-pacientes");
-
-    tabela.appendChild(pacienteTr);
-
     form.reset();
     var mensagensErro = document.querySelector("#mensagens-erro");
     mensagensErro.innerHTML = "";
     console.log(pacienteTr);
 });
+
+function adicionaPacienteNaTabela(paciente) {
+    var pacienteTr = montaTr(paciente);
+    var tabela = document.querySelector("#tabela-pacientes");
+    tabela.appendChild(pacienteTr);
+}
 
 function exibeMensagensDeErro(erros) {
     var ul = document.querySelector("#mensagens-erro")
@@ -57,7 +59,7 @@ function montaTr(paciente) {
     //Adicionando classe paciente ao meu objeto paciente
     pacienteTr.classList.add("paciente");
     // Colocando td na tr
-    pacienteTr.appendChild(montaTd(paciente.nome, "info-paciente"));
+    pacienteTr.appendChild(montaTd(paciente.nome, "info-nome"));
     pacienteTr.appendChild(montaTd(paciente.peso, "info-peso"));
     pacienteTr.appendChild(montaTd(paciente.altura, "info-altura"));
     pacienteTr.appendChild(montaTd(paciente.gordura, "info-gordura"));
